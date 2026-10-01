@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Note Sharing Platform</title>
+</head>
+
+<body>
+
+    <h1>Collaborative Note Sharing Platform</h1>
+
+    <p>Create, manage and share your notes easily.</p>
+
+    <h2>Create a New Note</h2>
+
+    <label>Note Title:</label>
+    <br>
+    <input type="text" id="noteTitle" placeholder="Enter note title">
+
+    <br><br>
+
+    <label>Note Content:</label>
+    <br>
+    <textarea id="noteContent" rows="8" cols="50"
+        placeholder="Write your note here..."></textarea>
+
+    <br><br>
+
+    <button onclick="saveNote()">Save Note</button>
+
+    <h2>My Notes</h2>
+
+    <div id="notesContainer">
+        <p>No notes created yet.</p>
+    </div>
+
+    <script>
+
+        function saveNote() {
+
+            let title = document.getElementById("noteTitle").value;
+            let content = document.getElementById("noteContent").value;
+
+            if (title === "" || content === "") {
+                alert("Please enter both the title and content.");
+                return;
+            }
+
+            let note = document.createElement("div");
+
+            note.innerHTML = `
+                <h3>${title}</h3>
+                <p>${content}</p>
+                <hr>
+            `;
+
+            document.getElementById("notesContainer").appendChild(note);
+
+            document.getElementById("noteTitle").value = "";
+            document.getElementById("noteContent").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
